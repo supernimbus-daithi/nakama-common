@@ -4255,6 +4255,22 @@ declare namespace nkruntime {
          * @throws {TypeError, GoError}
          */
          cronNext(cron: string, timestamp: number): number
+
+        /**
+         * Schedules the execution of the supplied RPC.
+         * 
+         * @param rpcName - The name of the RPC to execute.
+         * @param delaySeconds - How long to wait until executing the RPC.
+         * @param data - JSON payload data to pass to the RPC.
+         * @param key - The id of the scheduled RPC.
+         * @param async - An optional error value if an error occurred.
+         */
+        schedulerInSeconds(rpcName: string, delaySeconds: number, data: {[key: string]: any}, key: string, async: boolean): boolean
+
+        /**
+         * Cancels the execution of a previously scheduled RPC.
+         */
+        schedulerCancel(key: string): void
     }
 
     /**
